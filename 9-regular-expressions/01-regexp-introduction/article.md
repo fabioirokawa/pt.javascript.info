@@ -1,50 +1,50 @@
-# Patterns and flags
+# Padrões e flags
 
-Regular expressions are patterns that provide a powerful way to search and replace in text.
+Expressões regulares são padrões que providenciam uma poderosa forma de procurar e substituir no texto.
 
-In JavaScript, they are available via the [RegExp](mdn:js/RegExp) object, as well as being integrated in methods of strings.
+Em JavaScript, estão disponíveis através do objeto [RegExp](mdn:js/RegExp), além de estarem integradas nos métodos de strings.
 
-## Regular Expressions
+## Expressões Regulares
 
-A regular expression (also "regexp", or just "reg") consists of a *pattern* and optional *flags*.
+Uma expressão regular ("regexp" ou "reg") consiste em um *padrão* e *flags* opcionais.
 
-There are two syntaxes that can be used to create a regular expression object.
+Há duas sintaxes que podem ser usado para criar um objeto de expressão regular.
 
-The "long" syntax:
+O sintaxe "longo":
 
 ```js
 regexp = new RegExp("pattern", "flags");
 ```
 
-And the "short" one, using slashes `"/"`:
+E o "curto", usando barra '"/"';
 
 ```js
-regexp = /pattern/; // no flags
-regexp = /pattern/gmi; // with flags g,m and i (to be covered soon)
+regexp = /pattern/; // sem flags
+regexp = /pattern/gmi; // com flags g,m e i (será abordado em breve)
 ```
 
-Slashes `pattern:/.../` tell JavaScript that we are creating a regular expression. They play the same role as quotes for strings.
+As barras `pattern:/.../` contam ao JavaScript que estamos criando uma expressão regular. Possuem o mesmo papel que as aspas para strings.
 
-In both cases `regexp` becomes an instance of the built-in `RegExp` class.
+Em ambos casos `regexp` se torna uma instância da classe embutida `RegExp`.
 
-The main difference between these two syntaxes is that pattern using slashes `/.../` does not allow for expressions to be inserted (like string template literals with `${...}`). They are fully static.
+A principal diferença entre esses dois sintaxes é que o padrão usando barras `/.../` não permite a inserção de expressões (como o modelo de string literal com `${...}`). São totalmente estáticos.
 
-Slashes are used when we know the regular expression at the code writing time -- and that's the most common situation. While `new RegExp` is more often used when we need to create a regexp "on the fly" from a dynamically generated string. For instance:
+As barras são usadas quando temos conhecimento da expressão regular no momento em que o código é escrito -- que é a situação mais comum. Enquanto `new RegExp` é mais utilizado quando precisamos criar uma expressão "na hora" a partir de uma string gerada dinâmicamente. Por isso:
 
 ```js
-let tag = prompt("What tag do you want to find?", "h2");
+let tag = prompt("Qual tag gostaria de encontrar?", "h2");
 
-let regexp = new RegExp(`<${tag}>`); // same as /<h2>/ if answered "h2" in the prompt above
+let regexp = new RegExp(`<${tag}>`); // o mesmo que /<h2>/ se respondesse "h2" na linha acima
 ```
 
 ## Flags
 
-Regular expressions may have flags that affect the search.
+Expressões regulares podem ter flags que afetam a procura.
 
-There are only 6 of them in JavaScript:
+Exitem 6 deles em JavaScript:
 
 `pattern:i`
-: With this flag the search is case-insensitive: no difference between `A` and `a` (see the example below).
+: Com essa flag a procura é case-insensitive: não diferencia entre `A` e `a` (veja o exemplo abaixo). 
 
 `pattern:g`
 : With this flag the search looks for all matches, without it -- only the first match is returned.
